@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import SearchForm from "./components/SearchForm";
 import GifList from "./components/GifList";
+import axios from "axios";
+import { toHaveAccessibleDescription } from "@testing-library/jest-dom/dist/matchers";
+
 
 class App extends Component {
   constructor(){
@@ -13,12 +16,20 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch("http://api.giphy.com/v1/gifs/trending?api_key=nepJeKHHRhQqaEiCq0bVqC2MKS9SpMxC")
-    .then(response=>response.json())
-    .then(data=>this.setState({gifs: data.data}))
-    .catch((error)=>{
-      console.log("Errors fetching")
+    axios.get("http://api.giphy.com/v1/gifs/trending?api_key=nepJeKHHRhQqaEiCq0bVqC2MKS9SpMxC")
+    .then(response=>{
+      this.setState({
+        gifs: response.data.data
+      })
     })
+    .catch(error=>console.log("Error fetching data"))
+
+    // fetch("http://api.giphy.com/v1/gifs/trending?api_key=nepJeKHHRhQqaEiCq0bVqC2MKS9SpMxC")
+    // .then(response=>response.json())
+    // .then(data=>this.setState({gifs: data.data}))
+    // .catch((error)=>{
+    //   console.log("Errors fetching")
+    // })
     // .then(data=>console.log(data.data))
     // .then(data=>console.log(typeof data.data))
     // .then(arr=> this.setState(prevState=>

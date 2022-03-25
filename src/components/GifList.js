@@ -9,7 +9,7 @@ const GifList = props=>{
     // ))
     return (
         <ul className="gif-list">
-            < Gif data={props.data} />
+            < Gif data={props.data} key={props.data.id}/>
         </ul>
     )
 }
