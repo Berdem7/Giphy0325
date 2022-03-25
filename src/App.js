@@ -42,6 +42,8 @@ class App extends Component {
         
     // ))
   }
+
+  // changeSearch = (event)=>
   
   render() {
     console.log(this.state.gifs)
