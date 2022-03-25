@@ -11,18 +11,13 @@ class App extends Component {
     super();
     this.state ={
       gifs :[],
-      search:""
+      searchText:""
     }
   }
 
-  componentDidMount(){
-    axios.get("http://api.giphy.com/v1/gifs/trending?api_key=nepJeKHHRhQqaEiCq0bVqC2MKS9SpMxC")
-    .then(response=>{
-      this.setState({
-        gifs: response.data.data
-      })
-    })
-    .catch(error=>console.log("Error fetching data"))
+  // componentDidMount(){
+  //   const searchStr="horse";}
+    
 
     // fetch("http://api.giphy.com/v1/gifs/trending?api_key=nepJeKHHRhQqaEiCq0bVqC2MKS9SpMxC")
     // .then(response=>response.json())
@@ -52,17 +47,27 @@ class App extends Component {
     //     // console.log(arr.data)
         
     // ))
-  }
+  
 
   // changeSearch = (event)=>
   
+  performSearch =(query)=>{
+    axios.get(`http://api.giphy.com/v1/gifs/search?q=${query}&api_key=nepJeKHHRhQqaEiCq0bVqC2MKS9SpMxC`)
+    .then(response=>{
+      this.setState({
+        gifs: response.data.data
+      })
+    })
+    .catch(error=>console.log("Error fetching data"))
+  }
+
   render() {
     console.log(this.state.gifs)
     return (
       <div className="main-header">
         <div className="inner">
           <h1 className="main-title">Search App</h1>
-          <SearchForm />
+          <SearchForm onSearch={this.performSearch} />
         </div>
 
             <div className="main-content">
