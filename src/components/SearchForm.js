@@ -16,7 +16,8 @@ export default class SearchForm extends Component {
   handleSubmit = e =>{
     e.preventDefault()
     this.props.onSearch(this.state.searchText)
-    e.currentTarget.reset();
+    // e.currentTarget.reset();
+    console.log(e)
   }
   render() {
     console.log(this.state.searchText);
