@@ -5,15 +5,15 @@ const Gif = props =>{
     return (
         // <>
         
-        props.data.map(e=>(
+        // props.data.map(e=>(
         <li className="gif-wrap">
-            <img src={e.images.fixed_height.url} alt="" />
+            <img src={props.url} alt="" />
         </li>
 
-    ))
+    )
         
         // </>
-    )
+    
 }
 
 export default Gif
