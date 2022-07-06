@@ -1,9 +1,8 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import SearchForm from "./components/SearchForm";
 import GifList from "./components/GifList";
 import axios from "axios";
-import { toHaveAccessibleDescription } from "@testing-library/jest-dom/dist/matchers";
 
 
 function App () {
